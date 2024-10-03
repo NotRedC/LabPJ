@@ -7,7 +7,12 @@ public class main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("a=");
         int a = scanner.nextInt();
-        System.out.println("Valoarea: " + a);
+        System.out.print("b=");
+        int b = scanner.nextInt();
+        int perimetru = 2 * a + 2 * b;
+        int aria = a * b;
+        System.out.println("Perimetru= " + perimetru);
+        System.out.println("Aria = " + aria);
         scanner.close();
     }
 }
