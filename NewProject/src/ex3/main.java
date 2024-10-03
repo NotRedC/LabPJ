@@ -21,6 +21,6 @@ public class main {
         System.out.println(a);
         if (prim == 0)
             System.out.println("Numarul este prim");
-
+        flux_in.close();
     }
 }
