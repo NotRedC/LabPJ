@@ -86,16 +86,4 @@ class Parabola{
     public String toString() {
         return "f(x) = " + a + "x^2" + "+" + b + "x" + "+" + "c";
     }
-
-    public int getA() {
-        return a;
-    }
-
-    public int getB() {
-        return b;
-    }
-
-    public int getC() {
-        return c;
-    }
 }
