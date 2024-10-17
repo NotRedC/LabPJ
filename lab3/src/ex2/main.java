@@ -33,7 +33,21 @@ public class main {
         }
     }
 
-    public static void
+    public static void vanzareProdus(List<Produs> produse)
+    {
+        String produs_dorit = "zahar";
+        for(Produs p: produse)
+        {
+            if (produs_dorit.compareTo(p.getDenumire()) == 0)
+            {
+                p.setCantitate(p.getCantitate() - 1);
+                if(p.getCantitate() == 0)
+                {
+                    produse.remove(p);
+                }
+            }
+        }
+    }
 }
 
 class Produs{
@@ -57,6 +71,14 @@ class Produs{
 
     public LocalDate getData_exp() {
         return data_exp;
+    }
+
+    public String getDenumire() {
+        return denumire;
+    }
+
+    public int getCantitate() {
+        return cantitate;
     }
 
     public void setCantitate(int cantitate) {
