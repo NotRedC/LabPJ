@@ -1,51 +1,42 @@
 package ex2;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+
 
 public class main {
     public static void main(String[] args) throws IOException {
-        String nume_fis = "src/ex2/cantec_in.txt";
-        BufferedReader flux_in = new BufferedReader(new FileReader(nume_fis));
-        Vers myVers = new Vers();
+        String nume_fis_in = "src/ex2/cantec_in.txt";
+        String nume_fis_out = "src/ex2/cantec_out.txt";
+        BufferedReader flux_in = new BufferedReader(new FileReader(nume_fis_in));
+        BufferedWriter flux_out = new BufferedWriter(new FileWriter(nume_fis_out));
 
-        String test = flux_in.readLine();
-        String []arr_of_test = test.split(" ");
-
-        myVers.setVers(arr_of_test);
-        System.out.println(myVers.returnVocale());
-
-    }
-}
-
-class Vers{
-    private String []vers;
-    public int returnCuvinte(){
-        return vers.length;
-    }
-
-    public int returnVocale()
-    {
-        String voc = "aeiouAEIOU";
-        int nr_voc = 0;
-        for (int i = 0; i < vers.length; i++)
-        {
-            for (int j = 0; j < voc.length(); j++) {
-                if (vers[i].) {
-                    nr_voc++;
-                }
+        String v = flux_in.readLine();
+        while (v != null) {
+            Vers myVers = new Vers(v);
+            String versReturnat = myVers.getVers();
+            if (versReturnat.isEmpty())
+            {
+                flux_out.write("\n");
+                v = flux_in.readLine();
+                continue;
             }
+            int cuvinte = myVers.returnCuvinte();
+            int vocale = myVers.returnVocale();
+            String grupare = "";
+            double rand = Math.random();
+            if(myVers.getVers().toLowerCase().endsWith("le"))
+            {
+                grupare = "*";
+            }
+            if(rand < 0.1)
+            {
+                versReturnat = versReturnat.toUpperCase();
+            }
+            flux_out.write(versReturnat + " " + cuvinte + " " + vocale + " " + grupare + "\n");
+            v = flux_in.readLine();
         }
-        return nr_voc;
-    }
-
-    public String[] getVers() {
-        return vers;
-    }
-
-    public void setVers(String[] vers) {
-        this.vers = vers;
+        flux_in.close();
+        flux_out.close();
     }
 }
+
