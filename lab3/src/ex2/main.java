@@ -9,8 +9,15 @@ public class main {
     public static void main(String[] args) {
         List<Produs> produse = new ArrayList<Produs>();
         produse.add(new Produs("zahar", 1.5, 50, LocalDate.parse("2024-02-25")));
+        produse.add(new Produs("zahar", 1.5, 50, LocalDate.parse("2024-02-25")));
+        produse.add(new Produs("zahar", 1.5, 50, LocalDate.parse("2024-02-25")));
         afisareProduse(produse);
         afisareExpirate(produse);
+        vanzareProdus(produse);
+        for (Produs p:produse)
+        {
+            System.out.println(p.getIncasari());
+        }
 
     }
 
@@ -41,6 +48,7 @@ public class main {
             if (produs_dorit.compareTo(p.getDenumire()) == 0)
             {
                 p.setCantitate(p.getCantitate() - 1);
+                p.setIncasari(p.getPret());
                 if(p.getCantitate() == 0)
                 {
                     produse.remove(p);
@@ -85,7 +93,15 @@ class Produs{
         this.cantitate = cantitate;
     }
 
-    public static void setIncasari(double incasari) {
-        Produs.incasari = incasari;
+    public double getPret() {
+        return pret;
+    }
+
+    public double getIncasari() {
+        return incasari;
+    }
+
+    public void setIncasari(double incasari) {
+        this.incasari += incasari;
     }
 }
