@@ -1,0 +1,1 @@
+insert into evenimente(denumire,locatie,data,ora,pret) values ("Concert", "Heaven", "2024-06-19", "20:00", 90.50);
